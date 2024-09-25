@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Consumption Calculator</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Estimated Energy Consumption Calculator</h1>
+
+        <form action="/calculate" method="POST">
+            <label for="appliance">Choose an appliance:</label>
+            <select name="appliance" id="appliance">
+                <option value="Select">Select an Option</option>
+                <option value="Fridge">Fridge</option>
+                <option value="Washing Machine">Washing Machine</option>
+                <option value="Television">Television</option>
+                <option value="Air Conditioner">Air Conditioner</option>
+                <option value="Microwave">Microwave</option>
+            </select>
+
+            <label for="hours">Hours used per day:</label>
+            <input type="number" id="hours" name="hours" step="0.1" required>
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        {% if appliance %}
+        <div class="result">
+            <h2>Results</h2>
+            <p><strong>Appliance:</strong> {{ appliance }}</p>
+            <p><strong>Hours used per day:</strong> {{ hours }} hours</p>
+            <p><strong>Estimated Energy consumption:</strong> {{ energy_used }} kWh</p>
+            <p><strong>Estimated monthly consumption:</strong> {{ month }}kWh</p>
+            <p><strong>Estimated annual consumption:</strong> {{ annual }}kWh</p>
+
+            
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
